@@ -4,4 +4,6 @@ export const ScreenNames = {
   Cart: "Cart",
   Account: "Account",
   Favorite: "Favorite",
+  Categories: "Categories",
+  PopularDeals: "Popular Deals",
 };
