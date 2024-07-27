@@ -37,6 +37,8 @@ const Categories: React.FC<Props> = ({
               horizontal={horizontal}
               numColumns={numColumns}
               columnWrapperStyle={numColumns > 1 ? styles.columnWrapper : null}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
               key={listKey}
               data={categories}
               keyExtractor={(item) => item.id.toString()}

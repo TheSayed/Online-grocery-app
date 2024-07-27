@@ -49,6 +49,8 @@ const PopularDeals: React.FC<Props> = ({
               horizontal={horizontal}
               numColumns={numColumns}
               key={listKey}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
               columnWrapperStyle={numColumns > 1 ? styles.columnWrapper : null}
               data={sortedProducts}
               keyExtractor={(item) =>
@@ -61,6 +63,8 @@ const PopularDeals: React.FC<Props> = ({
                   unit={item.unit}
                   price={item.price}
                   image={item.image}
+                  width={150}
+                  height={189}
                 />
               )}
             />

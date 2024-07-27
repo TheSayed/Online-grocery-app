@@ -9,10 +9,26 @@ import {
 import React from "react";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
 import { colors } from "../constants/colors";
+type ProductCardProps = Product & {
+  width?: number;
+  height?: number;
+};
 
-const ProductCard = ({ name, unit, price, image }: Product) => {
+const ProductCard = ({
+  name,
+  unit,
+  price,
+  image,
+  width = 150, // Default value if width is not provided
+  height = 189, // Default value if height is not provided
+}: ProductCardProps) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        { width: scale(width), height: verticalScale(height) },
+      ]}
+    >
       <View style={styles.subContainer}>
         <View style={styles.imageContainer}>
           <Image
@@ -39,8 +55,6 @@ export default ProductCard;
 
 const styles = StyleSheet.create({
   container: {
-    width: scale(150),
-    height: verticalScale(189),
     backgroundColor: "#09c", // Use a color from your constants
     borderRadius: 20,
     marginBottom: verticalScale(17),
@@ -59,7 +73,10 @@ const styles = StyleSheet.create({
     overflow: "hidden", // Ensure that shadow doesn't spill out
   },
   subContainer: {
-    padding: scale(5),
+    paddingTop: verticalScale(24),
+    paddingBottom: verticalScale(16),
+    paddingLeft: scale(15),
+    paddingRight: scale(18),
   },
   imageContainer: {
     width: "100%",
@@ -78,13 +95,13 @@ const styles = StyleSheet.create({
     height: verticalScale(60),
   },
   productName: {
-    fontSize: moderateScale(18),
+    fontSize: moderateScale(15),
     fontFamily: "bold700",
     color: colors.secondary,
     marginVertical: verticalScale(2),
   },
   productUnit: {
-    fontSize: moderateScale(14),
+    fontSize: moderateScale(12),
     fontFamily: "regular400",
     color: colors.lightGrey,
     marginTop: verticalScale(1),
@@ -100,6 +117,7 @@ const styles = StyleSheet.create({
     fontSize: scale(20),
     fontFamily: "bold700",
     color: "white",
+    lineHeight: verticalScale(24),
   },
   addButton: {
     backgroundColor: colors.green,
