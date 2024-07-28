@@ -12,3 +12,13 @@ type Category = {
   name: string;
   image: string;
 };
+
+type CartItemProps = {
+  onIncrement: () => void;
+  onDecrement: () => void;
+  onRemove: () => void;
+  image: string;
+  name: string;
+  price: number;
+  quantity: number;
+};

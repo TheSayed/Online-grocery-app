@@ -33,9 +33,9 @@ const CartItem: React.FC<CartItemProps> = React.memo(
         </View>
         <View style={styles.priceAndIconContainer}>
           <TouchableOpacity style={styles.trashIcon} onPress={onRemove}>
-            <Image source={icons.trash} />
+            <Image style={styles.icon} source={icons.trash} />
           </TouchableOpacity>
-          <Text style={styles.productPrice}>Price: ${price}</Text>
+          <Text style={styles.productPrice}>${price}</Text>
         </View>
       </View>
     );
@@ -45,10 +45,10 @@ const CartItem: React.FC<CartItemProps> = React.memo(
 
 const styles = StyleSheet.create({
   itemContainer: {
-    backgroundColor: "lightyellow",
     flexDirection: "row",
     width: "100%",
     height: verticalScale(90),
+    paddingHorizontal: scale(16),
   },
   imageContainer: {
     flex: 1,
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(21),
   },
   productPrice: {
-    fontSize: 16,
+    fontSize: 18,
+    fontFamily: "regular400",
     color: colors.secondary,
     marginVertical: 4,
   },
@@ -110,11 +111,13 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   priceAndIconContainer: {
-    backgroundColor: "lightgray",
     flex: 1,
-
     alignItems: "flex-end",
     justifyContent: "space-around",
+  },
+  icon: {
+    width: scale(14),
+    height: scale(14),
   },
 });
 

@@ -84,11 +84,6 @@ const styles = StyleSheet.create({
     paddingBottom: verticalScale(16),
     paddingLeft: scale(15),
     paddingRight: scale(18),
-    shadowColor: "green",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.7,
-    shadowRadius: 8,
-    elevation: 3,
   },
   imageContainer: {
     width: "100%",

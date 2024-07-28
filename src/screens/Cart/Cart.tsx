@@ -73,6 +73,7 @@ const Cart = () => {
     [handleIncrement, handleDecrement, handleRemove]
   );
 
+  const Separator = () => <View style={styles.separator} />;
   return (
     <View style={styles.container}>
       {cartItems && cartItems.length > 0 ? (
@@ -81,6 +82,7 @@ const Cart = () => {
             data={cartItems}
             keyExtractor={(item) => item.product.id + ""}
             renderItem={renderItem}
+            ItemSeparatorComponent={Separator}
           />
           <Text style={styles.totalCost}>
             Total Cost: ${getTotalCost().toFixed(2)}
@@ -100,7 +102,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: verticalScale(19),
     backgroundColor: colors.white,
-    paddingHorizontal: scale(16),
   },
   totalCost: {
     fontSize: 20,
@@ -113,5 +114,10 @@ const styles = StyleSheet.create({
     color: colors.primary,
     textAlign: "center",
     marginTop: 20,
+  },
+  separator: {
+    height: 1,
+    width: "100%",
+    backgroundColor: colors.greySeparator,
   },
 });
