@@ -8,6 +8,7 @@ interface Icons {
   account: ImageRequireSource;
   location: ImageRequireSource;
   backArrow: ImageRequireSource;
+  trash: ImageRequireSource;
 }
 
 export const icons: Icons = {
@@ -18,4 +19,5 @@ export const icons: Icons = {
   account: require("./account.png"),
   location: require("./location.png"),
   backArrow: require("./backArrow.png"),
+  trash: require("./trash-03.png"),
 };

@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -6,22 +7,31 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
 import { colors } from "../constants/colors";
+import { addToCart } from "../screens/Cart/cartSlice";
+
 type ProductCardProps = Product & {
   width?: number;
   height?: number;
 };
 
 const ProductCard = ({
+  id,
   name,
   unit,
   price,
   image,
-  width = 150, // Default value if width is not provided
-  height = 189, // Default value if height is not provided
+  width = 150,
+  height = 189,
 }: ProductCardProps) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product: Product) => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <View
       style={[
@@ -41,7 +51,10 @@ const ProductCard = ({
           <Text style={styles.productUnit}>{unit}</Text>
           <View style={styles.priceContainer}>
             <Text style={styles.productPrice}>$ {price} </Text>
-            <TouchableOpacity style={styles.addButton}>
+            <TouchableOpacity
+              style={styles.addButton}
+              onPress={() => handleAddToCart({ id, name, unit, price, image })}
+            >
               <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
           </View>
@@ -55,28 +68,27 @@ export default ProductCard;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#09c", // Use a color from your constants
+    backgroundColor: "#09c",
     borderRadius: 20,
     marginBottom: verticalScale(17),
     marginRight: scale(15),
-    ...Platform.select({
-      ios: {
-        shadowColor: "rgba(196, 196, 196, 1)", // Shadow color for iOS
-        shadowOffset: { width: 0, height: 0 }, // No offset
-        shadowOpacity: 1, // Full opacity
-        shadowRadius: 13, // Blur radius
-      },
-      android: {
-        elevation: 8, // Elevation for Android
-      },
-    }),
-    overflow: "hidden", // Ensure that shadow doesn't spill out
+    overflow: "hidden",
+    shadowColor: "green",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.7,
+    shadowRadius: 8,
+    elevation: 3,
   },
   subContainer: {
     paddingTop: verticalScale(24),
     paddingBottom: verticalScale(16),
     paddingLeft: scale(15),
     paddingRight: scale(18),
+    shadowColor: "green",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.7,
+    shadowRadius: 8,
+    elevation: 3,
   },
   imageContainer: {
     width: "100%",

@@ -8,4 +8,6 @@ export const colors = {
   shadow: "rgba(196, 196, 196, 1)",
   black: "rgb(0, 0, 0)",
   green: "rgba(58, 161, 76, 1)",
+  tomato: "rgba(241, 82, 82, 1)",
+  operatorShadow: "rgba(109, 56, 5, 0.2)",
 };
