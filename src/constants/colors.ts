@@ -11,4 +11,5 @@ export const colors = {
   tomato: "rgba(241, 82, 82, 1)",
   operatorShadow: "rgba(109, 56, 5, 0.2)",
   greySeparator: "rgba(109, 56, 5, 0.09)",
+  creamy: "rgb(255, 244, 233)",
 };

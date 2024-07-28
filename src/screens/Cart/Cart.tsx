@@ -1,5 +1,11 @@
 import React, { useCallback } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decrementProductQuantity,
@@ -9,33 +15,12 @@ import {
 import { colors } from "../../constants/colors";
 import CartItem from "./CartItem";
 import { scale, verticalScale } from "../../utilis/scaling";
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-};
-
-type CartItemType = {
-  product: Product;
-  quantity: number;
-};
-
-type RootState = {
-  cart: {
-    cartItems: CartItemType[];
-  };
-};
+import OrderSummary from "./OrderSummary";
+import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
-
-  const getTotalCost = () => {
-    return cartItems.reduce((total: number, item: CartItemType) => {
-      return total + item.product.price * item.quantity;
-    }, 0);
-  };
 
   const handleIncrement = useCallback(
     (productId: number) => {
@@ -84,12 +69,10 @@ const Cart = () => {
             renderItem={renderItem}
             ItemSeparatorComponent={Separator}
           />
-          <Text style={styles.totalCost}>
-            Total Cost: ${getTotalCost().toFixed(2)}
-          </Text>
+          <OrderSummary />
         </>
       ) : (
-        <Text style={styles.loadingText}>Your cart is empty.</Text>
+        <EmptyCart />
       )}
     </View>
   );
@@ -102,12 +85,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: verticalScale(19),
     backgroundColor: colors.white,
-  },
-  totalCost: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: colors.primary,
-    marginTop: 16,
   },
   loadingText: {
     fontSize: 18,

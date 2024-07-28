@@ -37,6 +37,7 @@ const CartItem: React.FC<CartItemProps> = React.memo(
           </TouchableOpacity>
           <Text style={styles.productPrice}>${price}</Text>
         </View>
+        <View style={styles.separator} />
       </View>
     );
     5;
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: scale(16),
   },
   imageContainer: {
-    flex: 1,
+    width: "33%",
     backgroundColor: "#09c",
   },
   image: {

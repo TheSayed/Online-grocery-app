@@ -22,3 +22,14 @@ type CartItemProps = {
   price: number;
   quantity: number;
 };
+
+type CartItemType = {
+  product: Product;
+  quantity: number;
+};
+
+type RootState = {
+  cart: {
+    cartItems: CartItemType[];
+  };
+};
