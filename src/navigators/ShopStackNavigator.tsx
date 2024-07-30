@@ -4,6 +4,7 @@ import CategoriesScreen from "../screens/Categories/CategoriesScreen";
 import { ScreenNames } from "./route";
 import Shop from "../screens/Shop/Shop";
 import AppHeader from "../components/AppHeader";
+import SearchScreen from "../screens/Search.tsx/SearchScreen";
 
 const Stack = createStackNavigator();
 
@@ -11,7 +12,7 @@ const ShopStackNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={ScreenNames.Shop}>
       <Stack.Screen
-        name={ScreenNames.Shop}
+        name={"Shop Screen"}
         component={Shop}
         options={{
           header: () => (
@@ -34,6 +35,15 @@ const ShopStackNavigator = () => {
         options={{
           header: () => (
             <AppHeader title={ScreenNames.PopularDeals} showBackArrow={true} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name={ScreenNames.Search}
+        component={SearchScreen}
+        options={{
+          header: () => (
+            <AppHeader title={ScreenNames.Search} showBackArrow={true} />
           ),
         }}
       />

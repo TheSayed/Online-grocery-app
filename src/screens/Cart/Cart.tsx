@@ -1,11 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decrementProductQuantity,
@@ -14,7 +8,7 @@ import {
 } from "./cartSlice";
 import { colors } from "../../constants/colors";
 import CartItem from "./CartItem";
-import { scale, verticalScale } from "../../utilis/scaling";
+import { verticalScale } from "../../utilis/scaling";
 import OrderSummary from "./OrderSummary";
 import EmptyCart from "./EmptyCart";
 
@@ -44,17 +38,25 @@ const Cart = () => {
   );
 
   const renderItem = useCallback(
-    ({ item }) => (
-      <CartItem
-        onIncrement={() => handleIncrement(item.product.id)}
-        onDecrement={() => handleDecrement(item.product.id)}
-        onRemove={() => handleRemove(item.product.id)}
-        name={item.product.name}
-        price={item.product.price}
-        quantity={item.quantity}
-        image={item.image}
-      />
-    ),
+    ({ item }: { item: CartItemType }) => {
+      if (!item.product) return null;
+
+      const { id = 0, name = "", price = 0, image = "" } = item.product;
+      const { quantity } = item;
+
+      return (
+        <CartItem
+          onIncrement={() => handleIncrement(id)}
+          onDecrement={() => handleDecrement(id)}
+          onRemove={() => handleRemove(id)}
+          name={name}
+          price={price}
+          quantity={quantity}
+          image={image}
+          id={id}
+        />
+      );
+    },
     [handleIncrement, handleDecrement, handleRemove]
   );
 

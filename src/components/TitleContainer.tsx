@@ -12,7 +12,7 @@ type Props = {
 };
 
 const TitleContainer = ({ primaryTitle, secondaryTitle, marginTop }: Props) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
   const handleSeeAll = () => {
     if (primaryTitle === "Categories") {
       navigation.navigate(ScreenNames.Categories);

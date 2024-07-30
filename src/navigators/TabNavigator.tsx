@@ -9,7 +9,7 @@ import { icons } from "../../assets/icons";
 import BottomBarIcon from "../components/BottomBarIcon";
 import { colors } from "../constants/colors";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import AppHeader from "../components/AppHeader";
 import ShopStackNavigator from "./ShopStackNavigator";
 
@@ -93,12 +93,14 @@ const styles = StyleSheet.create({
   tabBar: {
     borderTopEndRadius: scale(25),
     borderTopLeftRadius: scale(25),
-    borderWidth: scale(1),
     borderColor: colors.grey,
-    height: verticalScale(83),
+    height: verticalScale(63),
+    padding: 0,
+    borderWidth: 1,
+    borderBottomWidth: 0,
     shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: -3 },
-    shadowOpacity: 0.06,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.1,
     shadowRadius: scale(13),
     elevation: scale(5),
   },

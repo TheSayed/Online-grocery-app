@@ -20,37 +20,34 @@ const AppHeader = ({ title, showBackArrow = true }: Props) => {
   const statusBarHeight: number | undefined =
     Platform.OS === "android" ? StatusBar.currentHeight : 0;
 
-  console.log(statusBarHeight, Platform.OS);
   return (
     <>
-      <SafeAreaView>
-        <View style={styles.headerContainer}>
-          <View
-            style={[
-              styles.icon,
-              {
-                top: statusBarHeight
-                  ? verticalScale(10) + statusBarHeight
-                  : verticalScale(10),
-              },
-            ]}
-          >
-            {showBackArrow && <BackArrow />}
-          </View>
-          <Text
-            style={[
-              styles.title,
-              {
-                marginTop: statusBarHeight
-                  ? verticalScale(30) + statusBarHeight
-                  : verticalScale(30),
-              },
-            ]}
-          >
-            {title}
-          </Text>
+      <View style={styles.headerContainer}>
+        <View
+          style={[
+            styles.icon,
+            {
+              top: statusBarHeight
+                ? verticalScale(10) + statusBarHeight
+                : verticalScale(10),
+            },
+          ]}
+        >
+          {showBackArrow && <BackArrow />}
         </View>
-      </SafeAreaView>
+        <Text
+          style={[
+            styles.title,
+            {
+              marginTop: statusBarHeight
+                ? verticalScale(30) + statusBarHeight
+                : verticalScale(30),
+            },
+          ]}
+        >
+          {title}
+        </Text>
+      </View>
     </>
   );
 };

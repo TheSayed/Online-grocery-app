@@ -2,19 +2,15 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import { colors } from "../../constants/colors";
 import { moderateScale, scale, verticalScale } from "../../utilis/scaling";
+import ImageWithPlaceholder from "../../components/ImageWithPlaceholder";
 
 const CategoryCard = ({ image, name }: Category) => {
   return (
     <View style={styles.itemContainer}>
-      <Image
-        source={{
-          uri: image,
-        }}
-        style={styles.image}
-        onError={(error) =>
-          console.log("Image load error:", error.nativeEvent.error)
-        }
-      />
+      <View style={styles.imageContainer}>
+        <ImageWithPlaceholder image={image} />
+      </View>
+
       <Text style={styles.categoryName}>{name}</Text>
     </View>
   );
@@ -28,12 +24,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingRight: scale(10),
   },
-  image: {
+  imageContainer: {
     width: scale(100),
     height: scale(100),
     marginRight: 10,
     borderRadius: 100,
-    backgroundColor: "#09c",
   },
   categoryName: {
     color: colors.secondary,

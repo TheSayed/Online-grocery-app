@@ -1,48 +1,54 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  ImageSourcePropType,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { colors } from "../../constants/colors";
 import { moderateScale, scale, verticalScale } from "../../utilis/scaling";
 import { icons } from "../../../assets/icons";
+import ImageWithPlaceholder from "../../components/ImageWithPlaceholder";
 
-const CartItem: React.FC<CartItemProps> = React.memo(
-  ({ onIncrement, onDecrement, onRemove, name, price, quantity, image }) => {
-    return (
-      <View style={styles.itemContainer}>
-        <View style={styles.imageContainer}>
-          <Image source={{ uri: image }} />
-        </View>
-        <View style={styles.cremintation}>
-          <Text style={styles.productName}>{name}</Text>
-          <View style={styles.subCremintation}>
-            <TouchableOpacity style={styles.operator} onPress={onIncrement}>
-              <Text style={styles.operatorText}>+</Text>
-            </TouchableOpacity>
-            <Text style={styles.operatorText}>{quantity}</Text>
-            <TouchableOpacity style={styles.operator} onPress={onDecrement}>
-              <Text style={styles.operatorText}>-</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.priceAndIconContainer}>
-          <TouchableOpacity style={styles.trashIcon} onPress={onRemove}>
-            <Image style={styles.icon} source={icons.trash} />
-          </TouchableOpacity>
-          <Text style={styles.productPrice}>${price}</Text>
-        </View>
-        <View style={styles.separator} />
+const CartItem: React.FC<CartItemProps> = ({
+  onIncrement,
+  onDecrement,
+  onRemove,
+  name,
+  price,
+  quantity,
+  image,
+}) => {
+  return (
+    <View style={styles.itemContainer}>
+      <View style={styles.imageContainer}>
+        <ImageWithPlaceholder image={image} />
       </View>
-    );
-    5;
-  }
-);
+      <View style={styles.cremintation}>
+        <Text style={styles.productName}>{name}</Text>
+        <View style={styles.subCremintation}>
+          <TouchableOpacity
+            style={styles.operator}
+            hitSlop={{ bottom: 20, left: 20, right: 20, top: 20 }}
+            onPress={onIncrement}
+          >
+            <Text style={styles.operatorText}>+</Text>
+          </TouchableOpacity>
+          <Text style={styles.operatorText}>{quantity}</Text>
+          <TouchableOpacity
+            style={styles.operator}
+            hitSlop={{ bottom: 20, left: 20, right: 20, top: 20 }}
+            onPress={onDecrement}
+          >
+            <Text style={styles.operatorText}>-</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.priceAndIconContainer}>
+        <TouchableOpacity style={styles.trashIcon} onPress={onRemove}>
+          <Image style={styles.icon} source={icons.trash} />
+        </TouchableOpacity>
+        <Text style={styles.productPrice}>${price}</Text>
+      </View>
+    </View>
+  );
+  5;
+};
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -53,10 +59,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     width: "33%",
-    backgroundColor: "#09c",
-  },
-  image: {
-    resizeMode: "contain",
+    height: "100%",
   },
   productName: {
     fontSize: moderateScale(18),

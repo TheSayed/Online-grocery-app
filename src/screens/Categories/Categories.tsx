@@ -62,7 +62,5 @@ export default Categories;
 const styles = StyleSheet.create({
   columnWrapper: {
     justifyContent: "space-between",
-
-    // Add vertical spacing between rows
   },
 });
