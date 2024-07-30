@@ -8,10 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { useGetCategoriesQuery } from "../../services/groceryApi";
-import { verticalScale } from "../../utilis/scaling";
-
 import CategoryCard from "./CategoryCard";
-import { colors } from "../../constants/colors";
 
 type Props = {
   numColumns?: number;
