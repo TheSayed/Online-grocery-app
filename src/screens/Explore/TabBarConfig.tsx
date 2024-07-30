@@ -29,9 +29,10 @@ const styles = StyleSheet.create({
     borderTopStartRadius: moderateScale(29),
   },
   tabBar: {
-    marginTop: verticalScale(16),
     marginBottom: verticalScale(21),
     backgroundColor: colors.white,
+    padding: 0,
+    height: verticalScale(60),
   },
   label: {
     color: colors.secondary,

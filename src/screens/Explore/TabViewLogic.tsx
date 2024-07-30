@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { SceneMap } from "react-native-tab-view";
-import Lists from "./Lists"; // Import your scene components
+import CategoryProducts from "./CategoryProducts";
 import { useGetCategoriesQuery } from "../../services/groceryApi";
 
 interface Route {
@@ -21,9 +21,9 @@ const TabViewLogic = (width: number) => {
   const createDynamicComponents = (routes: Route[]) => {
     return routes.reduce<DynamicComponents>((acc, route) => {
       if (route.key === "all") {
-        acc[route.key] = () => <Lists />;
+        acc[route.key] = () => <CategoryProducts />;
       } else {
-        acc[route.key] = () => <Lists categoryId={route.key} />;
+        acc[route.key] = () => <CategoryProducts categoryId={+route.key} />;
       }
       return acc;
     }, {});
@@ -32,7 +32,7 @@ const TabViewLogic = (width: number) => {
   useEffect(() => {
     if (categories) {
       const categoryRoutes = categories.map((category) => ({
-        key: category.id,
+        key: category.id + "",
         title: category.name,
       }));
 
