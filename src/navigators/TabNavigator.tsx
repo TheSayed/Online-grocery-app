@@ -9,7 +9,7 @@ import { icons } from "../../assets/icons";
 import BottomBarIcon from "../components/BottomBarIcon";
 import { colors } from "../constants/colors";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import AppHeader from "../components/AppHeader";
 import ShopStackNavigator from "./ShopStackNavigator";
 
@@ -67,7 +67,7 @@ const TabNavigator = () => {
         options={{
           ...options,
           tabBarIcon: ({ focused }) => (
-            <BottomBarIcon focused={focused} icon={icons.favorite} />
+            <BottomBarIcon focused={focused} icon={icons.heart} />
           ),
           header: () => <AppHeader title={ScreenNames.Favorite} />,
         }}

@@ -4,7 +4,7 @@ import CategoriesScreen from "../screens/Categories/CategoriesScreen";
 import { ScreenNames } from "./route";
 import Shop from "../screens/Shop/Shop";
 import AppHeader from "../components/AppHeader";
-import SearchScreen from "../screens/Search.tsx/SearchScreen";
+import SearchScreen from "../screens/Search/SearchScreen";
 
 const Stack = createStackNavigator();
 
