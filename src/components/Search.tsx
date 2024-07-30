@@ -37,6 +37,10 @@ const Search = () => {
     setIsFocused(false);
   };
 
+  const handleNavigationToExplore = () => {
+    navigation.navigate(ScreenNames.Explore);
+  };
+
   useEffect(() => {
     const updateSuggestions = () => {
       if (searchQuery.trim() !== "") {
@@ -97,16 +101,20 @@ const Search = () => {
         <View
           style={[styles.suggestionsContainer, { height: containerHeight }]}
         >
-          <FlatList
-            data={suggestions}
-            keyExtractor={(item, index) => index.toString()}
-            ItemSeparatorComponent={Separator}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => handleSuggestionPress(item)}>
-                <Text style={styles.suggestion}>{item}</Text>
-              </TouchableOpacity>
-            )}
-          />
+          {suggestions.length > 0 ? (
+            <FlatList
+              data={suggestions}
+              keyExtractor={(item, index) => index.toString()}
+              ItemSeparatorComponent={Separator}
+              renderItem={({ item }) => (
+                <TouchableOpacity onPress={() => handleSuggestionPress(item)}>
+                  <Text style={styles.suggestion}>{item}</Text>
+                </TouchableOpacity>
+              )}
+            />
+          ) : (
+            <Text style={styles.suggestion}>No Matched Results</Text>
+          )}
         </View>
       )}
     </View>
