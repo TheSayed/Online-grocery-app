@@ -1,16 +1,10 @@
-import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Platform,
-} from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
 import { colors } from "../constants/colors";
 import { addToCart } from "../screens/Cart/cartSlice";
+import ImageWithPlaceholder from "./ImageWithPlaceholder";
 
 type ProductCardProps = Product & {
   width?: number;
@@ -28,7 +22,8 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const dispatch = useDispatch();
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = () => {
+    const product = { id, name, unit, price, image };
     dispatch(addToCart(product));
   };
 
@@ -41,19 +36,17 @@ const ProductCard = ({
     >
       <View style={styles.subContainer}>
         <View style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={{ uri: image }} // Replace with your image source
-          />
+          <ImageWithPlaceholder image={image} />
         </View>
         <View style={styles.detailsContainer}>
           <Text style={styles.productName}>{name}</Text>
-          <Text style={styles.productUnit}>{unit}</Text>
+          <Text style={styles.productUnit}>1 {unit}</Text>
           <View style={styles.priceContainer}>
-            <Text style={styles.productPrice}>$ {price} </Text>
+            <Text style={styles.productPrice}>${price} </Text>
             <TouchableOpacity
               style={styles.addButton}
-              onPress={() => handleAddToCart({ id, name, unit, price, image })}
+              onPress={handleAddToCart}
+              hitSlop={{ bottom: 20, left: 20, right: 20, top: 20 }}
             >
               <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
@@ -68,12 +61,11 @@ export default ProductCard;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#09c",
+    backgroundColor: colors.white,
     borderRadius: 20,
     marginBottom: verticalScale(17),
     marginRight: scale(15),
-    overflow: "hidden",
-    shadowColor: "green",
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.7,
     shadowRadius: 8,
@@ -90,12 +82,6 @@ const styles = StyleSheet.create({
     height: "50%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.greyBackground,
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
   },
   detailsContainer: {
     paddingVertical: verticalScale(5),
@@ -123,13 +109,13 @@ const styles = StyleSheet.create({
   productPrice: {
     fontSize: scale(20),
     fontFamily: "bold700",
-    color: "white",
+    color: colors.primary,
     lineHeight: verticalScale(24),
   },
   addButton: {
     backgroundColor: colors.green,
     width: scale(29),
-    height: scale(29), // Use a color from your constants
+    height: scale(29),
     borderRadius: 29,
     justifyContent: "center",
     alignItems: "center",
