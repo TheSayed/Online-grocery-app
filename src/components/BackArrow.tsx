@@ -12,8 +12,14 @@ const BackArrow: React.FC = () => {
       onPress={() => {
         navigation.goBack();
       }}
+      hitSlop={{ bottom: 30, left: 30, right: 30, top: 30 }}
+      testID="back-arrow-button"
     >
-      <Image source={icons.backArrow} style={styles.icon} />
+      <Image
+        source={icons.backArrow}
+        style={styles.icon}
+        testID="back-arrow-icon"
+      />
     </TouchableOpacity>
   );
 };
