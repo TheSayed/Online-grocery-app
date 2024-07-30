@@ -9,7 +9,10 @@ const OrderSummary = () => {
 
   const getSubTotalCost = () => {
     return cartItems.reduce((total: number, item: CartItemType) => {
-      return total + item.product.price * item.quantity;
+      if (item.product && typeof item.product.price === "number") {
+        return total + item.product.price * item.quantity;
+      }
+      return total;
     }, 0);
   };
 
