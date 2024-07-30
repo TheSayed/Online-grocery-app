@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import React from "react";
 import { useGetProductsQuery } from "../../services/groceryApi";
 import Search from "../../components/Search";
@@ -14,9 +14,8 @@ const Shop = () => {
 
   return (
     <View style={styles.container}>
-      <View>
-        <Search onSearch={() => console.log("search")} />
-
+      <Search />
+      <ScrollView>
         {!isLoading && !error && (
           <View>
             <TitleContainer
@@ -42,7 +41,7 @@ const Shop = () => {
             />
           </View>
         )}
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -51,6 +50,7 @@ export default Shop;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: colors.white,
     paddingHorizontal: scale(16),
     alignItems: "center",

@@ -1,10 +1,10 @@
 type Product = {
-  id?: number;
-  name?: string;
+  id: number;
+  name: string;
   categoryId?: number;
-  price?: number;
-  unit?: string;
-  image?: string;
+  price: number;
+  unit: string;
+  image: string;
 };
 
 type Category = {
@@ -21,6 +21,7 @@ type CartItemProps = {
   name: string;
   price: number;
   quantity: number;
+  id: number;
 };
 
 type CartItemType = {
@@ -33,3 +34,9 @@ type RootState = {
     cartItems: CartItemType[];
   };
 };
+
+type RootStackParamList = {
+  [K in (typeof ScreenNames)[keyof typeof ScreenNames]]: undefined;
+};
+
+type NavigationProp = StackNavigationProp<RootStackParamList>;
