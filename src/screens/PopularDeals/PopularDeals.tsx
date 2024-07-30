@@ -27,7 +27,6 @@ const PopularDeals: React.FC<Props> = ({
 }) => {
   const { data: products, error, isLoading } = useGetProductsQuery();
 
-  // Sort products by price and limit to the first 10
   const sortedProducts = products
     ? [...products].sort((a, b) => (a.price ?? 0) - (b.price ?? 0)).slice(0, 10)
     : [];
@@ -58,13 +57,13 @@ const PopularDeals: React.FC<Props> = ({
               }
               renderItem={({ item }) => (
                 <ProductCard
-                  key={item.id}
+                  id={item.id}
                   name={item.name}
                   unit={item.unit}
                   price={item.price}
                   image={item.image}
-                  width={150}
                   height={189}
+                  width={164}
                 />
               )}
             />
@@ -79,7 +78,7 @@ export default PopularDeals;
 
 const styles = StyleSheet.create({
   columnWrapper: {
-    justifyContent: "center", // Center items in the row
-    marginBottom: verticalScale(10), // Add vertical spacing between rows
+    justifyContent: "center",
+    marginBottom: verticalScale(10),
   },
 });

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     paddingTop: verticalScale(32),
   },
   listStyle: {
-    width: "100%", // Ensure the FlatList takes the full width of its container
+    width: "100%",
   },
   subContainer: {
     width: "88%",
