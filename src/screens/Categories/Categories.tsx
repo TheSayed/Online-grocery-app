@@ -1,35 +1,27 @@
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  ViewStyle,
-  TextStyle,
-  ImageStyle,
-} from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import React from "react";
 import { useGetCategoriesQuery } from "../../services/groceryApi";
 import CategoryCard from "./CategoryCard";
+import { verticalScale } from "../../utilis/scaling";
 
 type Props = {
   numColumns?: number;
   horizontal?: boolean;
   listKey: string;
-  containerStyle?: ViewStyle | TextStyle | ImageStyle;
 };
 
 const Categories: React.FC<Props> = ({
   numColumns = 1,
   horizontal = false,
   listKey,
-  containerStyle,
 }) => {
-  const { data: categories, error, isLoading } = useGetCategoriesQuery();
+  const { data: categories, isLoading } = useGetCategoriesQuery();
 
   return (
     <View>
       {!isLoading && (
         <>
-          <View style={containerStyle}>
+          <View style={styles.container}>
             <FlatList
               horizontal={horizontal}
               numColumns={numColumns}
@@ -57,6 +49,9 @@ const Categories: React.FC<Props> = ({
 export default Categories;
 
 const styles = StyleSheet.create({
+  container: {
+    paddingTop: verticalScale(32),
+  },
   columnWrapper: {
     justifyContent: "space-between",
   },

@@ -8,11 +8,11 @@ const SplashScreenComponent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={images.emptyCart} />
+        <Image style={styles.image} source={images.splashScreen} />
       </View>
       <Text style={styles.title}>Relax and shop</Text>
       <Text style={styles.description}>
-        Shop online and get grocories delivered from stores to your home in as
+        Shop online and get groceries delivered from stores to your home in as
         fast as 1 hour .
       </Text>
     </View>
@@ -24,10 +24,15 @@ export default SplashScreenComponent;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: scale(22),
-    marginTop: verticalScale(132),
   },
   imageContainer: {
-    marginTop: verticalScale(36),
+    height: verticalScale(374),
+    marginTop: verticalScale(132),
+  },
+  image: {
+    resizeMode: "contain",
+    height: "100%",
+    width: "100%",
   },
   title: {
     fontSize: moderateScale(20),
@@ -42,7 +47,6 @@ const styles = StyleSheet.create({
     color: colors.secondary,
     textAlign: "center",
     fontFamily: "regular400",
-    lineHeight: verticalScale(19),
     marginTop: verticalScale(16),
     paddingHorizontal: scale(22),
   },

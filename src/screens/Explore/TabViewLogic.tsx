@@ -13,7 +13,7 @@ interface DynamicComponents {
 }
 
 const TabViewLogic = (width: number) => {
-  const { data: categories, error, isLoading } = useGetCategoriesQuery();
+  const { data: categories } = useGetCategoriesQuery();
 
   const [index, setIndex] = useState(0);
   const [routes, setRoutes] = useState<Route[]>([]);

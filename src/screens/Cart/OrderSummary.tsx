@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { colors } from "../../constants/colors";
 import { moderateScale, scale, verticalScale } from "../../utilis/scaling";
 

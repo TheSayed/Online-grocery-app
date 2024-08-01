@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import React from "react";
 import { useGetProductsQuery } from "../../services/groceryApi";
 import ProductsList from "../../components/ProductsList";

@@ -3,13 +3,12 @@ import React from "react";
 import { images } from "../../../assets/Images";
 import { colors } from "../../constants/colors";
 import { moderateScale, scale, verticalScale } from "../../utilis/scaling";
-import { fonts } from "../../../assets/fonts/fonts";
 
 const EmptyCart = () => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={images.emptyCart} />
+        <Image style={styles.image} source={images.emptyCart} />
       </View>
       <Text style={styles.loadingText}>Your cart is empty.</Text>
       <TouchableOpacity style={styles.totalCostContainer}>
@@ -26,14 +25,19 @@ const styles = StyleSheet.create({
     marginHorizontal: scale(22),
   },
   imageContainer: {
-    marginTop: verticalScale(36),
-    marginBottom: verticalScale(16),
+    height: verticalScale(374),
+  },
+  image: {
+    resizeMode: "contain",
+    height: "100%",
+    width: "100%",
   },
   loadingText: {
     fontSize: moderateScale(20),
     color: colors.secondary,
     textAlign: "center",
     fontFamily: "bold700",
+    marginTop: verticalScale(16),
   },
   totalCostContainer: {
     justifyContent: "center",

@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ViewStyle,
-  TextStyle,
-  ImageStyle,
-} from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import React from "react";
 import ProductCard from "../../components/ProductCard";
 import { verticalScale } from "../../utilis/scaling";
@@ -16,14 +8,12 @@ type Props = {
   numColumns?: number;
   horizontal?: boolean;
   listKey: string;
-  containerStyle?: ViewStyle | TextStyle | ImageStyle;
 };
 
 const PopularDeals: React.FC<Props> = ({
   numColumns = 1,
   horizontal = false,
   listKey,
-  containerStyle,
 }) => {
   const { data: products, error, isLoading } = useGetProductsQuery();
 
@@ -40,35 +30,27 @@ const PopularDeals: React.FC<Props> = ({
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       {!isLoading && (
-        <>
-          <View style={containerStyle}>
-            <FlatList
-              horizontal={horizontal}
-              numColumns={numColumns}
-              key={listKey}
-              showsHorizontalScrollIndicator={false}
-              showsVerticalScrollIndicator={false}
-              columnWrapperStyle={numColumns > 1 ? styles.columnWrapper : null}
-              data={sortedProducts}
-              keyExtractor={(item) =>
-                item.id ? item.id.toString() : item.id + ""
-              }
-              renderItem={({ item }) => (
-                <ProductCard
-                  id={item.id}
-                  name={item.name}
-                  unit={item.unit}
-                  price={item.price}
-                  image={item.image}
-                  height={189}
-                  width={164}
-                />
-              )}
+        <FlatList
+          horizontal={horizontal}
+          numColumns={numColumns}
+          key={listKey}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          columnWrapperStyle={numColumns > 1 ? styles.columnWrapper : undefined}
+          data={sortedProducts}
+          keyExtractor={(item) => (item.id ? item.id.toString() : item.id + "")}
+          renderItem={({ item }) => (
+            <ProductCard
+              id={item.id}
+              name={item.name}
+              unit={item.unit}
+              price={item.price}
+              image={item.image}
             />
-          </View>
-        </>
+          )}
+        />
       )}
     </View>
   );
@@ -79,6 +61,11 @@ export default PopularDeals;
 const styles = StyleSheet.create({
   columnWrapper: {
     justifyContent: "center",
-    marginBottom: verticalScale(10),
+    alignItems: "center",
+  },
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: verticalScale(31),
   },
 });

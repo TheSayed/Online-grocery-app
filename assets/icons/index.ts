@@ -21,5 +21,5 @@ export const icons: Icons = {
   location: require("./location.png"),
   backArrow: require("./backArrow.png"),
   trash: require("./trash-03.png"),
-  search: require("./search-03.png"),
+  search: require("./search.png"),
 };

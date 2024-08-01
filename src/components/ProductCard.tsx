@@ -1,25 +1,18 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
 import { useDispatch } from "react-redux";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
 import { colors } from "../constants/colors";
 import { addToCart } from "../screens/Cart/cartSlice";
 import ImageWithPlaceholder from "./ImageWithPlaceholder";
 
-type ProductCardProps = Product & {
-  width?: number;
-  height?: number;
-};
-
-const ProductCard = ({
-  id,
-  name,
-  unit,
-  price,
-  image,
-  width = 150,
-  height = 189,
-}: ProductCardProps) => {
+const ProductCard = ({ id, name, unit, price, image }: Product) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -28,12 +21,7 @@ const ProductCard = ({
   };
 
   return (
-    <View
-      style={[
-        styles.container,
-        { width: scale(width), height: verticalScale(height) },
-      ]}
-    >
+    <View style={styles.container}>
       <View style={styles.subContainer}>
         <View style={styles.imageContainer}>
           <ImageWithPlaceholder image={image} />
@@ -65,26 +53,34 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: verticalScale(17),
     marginRight: scale(15),
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.7,
-    shadowRadius: 8,
-    elevation: 3,
+    ...Platform.select({
+      ios: {
+        shadowColor: colors.shadow,
+        shadowOffset: { width: scale(2), height: verticalScale(2) },
+        shadowOpacity: 0.5,
+        shadowRadius: scale(10),
+      },
+      android: {
+        elevation: scale(8),
+      },
+    }),
+    width: scale(164),
+    height: verticalScale(194),
   },
   subContainer: {
-    paddingTop: verticalScale(24),
+    paddingTop: verticalScale(12),
     paddingBottom: verticalScale(16),
     paddingLeft: scale(15),
     paddingRight: scale(18),
   },
   imageContainer: {
     width: "100%",
-    height: "50%",
+    height: verticalScale(85),
     justifyContent: "center",
     alignItems: "center",
   },
   detailsContainer: {
-    paddingVertical: verticalScale(5),
+    marginVertical: verticalScale(5),
     height: verticalScale(60),
   },
   productName: {
@@ -104,13 +100,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-    marginTop: verticalScale(4),
+    paddingTop: verticalScale(1),
   },
   productPrice: {
     fontSize: scale(20),
     fontFamily: "bold700",
     color: colors.primary,
-    lineHeight: verticalScale(24),
+    marginTop: verticalScale(1),
   },
   addButton: {
     backgroundColor: colors.green,

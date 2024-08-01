@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React from "react";
 import Categories from "./Categories";
 import { verticalScale } from "../../utilis/scaling";
@@ -12,7 +12,6 @@ const CategoriesScreen = () => {
           horizontal={false}
           numColumns={2}
           listKey="Categories-flatlist-numColumns-1"
-          containerStyle={styles.listStyle}
         />
       </View>
     </View>
@@ -28,10 +27,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.white,
     paddingTop: verticalScale(32),
-  },
-  listStyle: {
-    width: "100%",
-    backgroundColor: colors.white,
   },
   subContainer: {
     width: "88%",

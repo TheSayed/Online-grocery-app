@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Platform,
-  StatusBar,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, StyleSheet, Platform, StatusBar } from "react-native";
 import BackArrow from "./BackArrow";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
 import { colors } from "../constants/colors";

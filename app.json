@@ -3,17 +3,24 @@
     "name": "onlineGrocery",
     "slug": "onlineGrocery",
     "version": "1.0.0",
-    "orientation": "landscape",
+    "orientation": "portrait",
     "icon": "./assets/Images/placeholderImage.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UISupportedInterfaceOrientations": [
+          "UIInterfaceOrientationPortrait",
+          "UIInterfaceOrientationPortraitUpsideDown"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/Images/placeholderImage.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "screenOrientation": "portrait"
     },
     "web": {
       "favicon": "./assets/new-favicon.png"

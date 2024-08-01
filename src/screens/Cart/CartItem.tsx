@@ -47,7 +47,6 @@ const CartItem: React.FC<CartItemProps> = ({
       </View>
     </View>
   );
-  5;
 };
 
 const styles = StyleSheet.create({
@@ -68,13 +67,13 @@ const styles = StyleSheet.create({
     lineHeight: verticalScale(21),
   },
   productPrice: {
-    fontSize: 18,
+    fontSize: moderateScale(18),
     fontFamily: "regular400",
     color: colors.secondary,
     marginVertical: 4,
   },
   operatorText: {
-    fontSize: 16,
+    fontSize: moderateScale(18),
     color: colors.secondary,
   },
   cremintation: {
@@ -111,8 +110,8 @@ const styles = StyleSheet.create({
     shadowColor: colors.operatorShadow,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowRadius: scale(2),
+    elevation: scale(2),
   },
   priceAndIconContainer: {
     flex: 1,

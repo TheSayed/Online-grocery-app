@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import Explore from "../screens/Explore/Explore";
 import { ScreenNames } from "./route";
 import Cart from "../screens/Cart/Cart";
@@ -9,7 +8,7 @@ import { icons } from "../../assets/icons";
 import BottomBarIcon from "../components/BottomBarIcon";
 import { colors } from "../constants/colors";
 import { moderateScale, scale, verticalScale } from "../utilis/scaling";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import AppHeader from "../components/AppHeader";
 import ShopStackNavigator from "./ShopStackNavigator";
 
@@ -22,6 +21,7 @@ const options = {
     fontFamily: "medium500",
     fontSize: moderateScale(10),
   },
+  cardStyle: { backgroundColor: colors.white },
 };
 
 const TabNavigator = () => {
@@ -96,12 +96,21 @@ const styles = StyleSheet.create({
     borderColor: colors.grey,
     height: verticalScale(63),
     padding: 0,
-    borderWidth: 1,
+    borderWidth: scale(1),
     borderBottomWidth: 0,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.1,
-    shadowRadius: scale(13),
-    elevation: scale(5),
+    ...Platform.select({
+      ios: {
+        shadowColor: colors.shadow,
+        shadowOffset: {
+          width: 0,
+          height: verticalScale(-4),
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: scale(10),
+      },
+      android: {
+        elevation: scale(10),
+      },
+    }),
   },
 });

@@ -21,8 +21,6 @@ const ProductsList = ({ products }: Props) => {
             unit={item.unit}
             price={item.price}
             image={item.image}
-            height={189}
-            width={164}
           />
         )}
         contentContainerStyle={styles.contentContainer}

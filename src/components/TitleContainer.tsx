@@ -37,17 +37,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: scale(10),
-    marginBottom: verticalScale(32),
   },
   title: {
     fontSize: moderateScale(22),
     color: colors.secondary,
     fontFamily: "bold700",
-    lineHeight: verticalScale(27),
   },
   seeAll: {
     fontSize: moderateScale(18),
     color: colors.primary,
     fontFamily: "regular400",
+    marginEnd: verticalScale(35),
   },
 });

@@ -8,7 +8,7 @@ import {
   Text,
   Image,
 } from "react-native";
-import { scale, verticalScale } from "../utilis/scaling";
+import { moderateScale, scale, verticalScale } from "../utilis/scaling";
 import { colors } from "../constants/colors";
 import { useGetProductsQuery } from "../services/groceryApi";
 import { useNavigation } from "@react-navigation/native";
@@ -35,10 +35,6 @@ const Search = () => {
     navigation.navigate(ScreenNames.Search, { searchQuery: item });
     setSearchQuery(item);
     setIsFocused(false);
-  };
-
-  const handleNavigationToExplore = () => {
-    navigation.navigate(ScreenNames.Explore);
   };
 
   useEffect(() => {
@@ -76,6 +72,7 @@ const Search = () => {
     <View style={styles.container}>
       <View style={styles.searchButton}>
         <Image tintColor={colors.secondary} source={icons.search} />
+
         <TextInput
           style={styles.input}
           placeholder="Search"
@@ -104,7 +101,7 @@ const Search = () => {
           {suggestions.length > 0 ? (
             <FlatList
               data={suggestions}
-              keyExtractor={(item, index) => index.toString()}
+              keyExtractor={(index) => index.toString()}
               ItemSeparatorComponent={Separator}
               renderItem={({ item }) => (
                 <TouchableOpacity onPress={() => handleSuggestionPress(item)}>
@@ -131,7 +128,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.greyBackground,
     borderRadius: 8,
-    borderWidth: 1,
+    borderWidth: scale(1),
     borderColor: colors.grey,
     opacity: 0.9,
     shadowColor: colors.shadow,
@@ -149,7 +146,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: verticalScale(48),
-    fontSize: 16,
+    fontSize: moderateScale(16),
     color: colors.black,
   },
   searchTextContainer: {
@@ -165,7 +162,8 @@ const styles = StyleSheet.create({
   },
   searchText: {
     color: colors.white,
-    fontSize: 16,
+    fontSize: moderateScale(16),
+    fontFamily: "regular400",
   },
   clearButton: {
     position: "absolute",
@@ -176,12 +174,12 @@ const styles = StyleSheet.create({
   },
   clearText: {
     color: colors.primary,
-    fontSize: 16,
+    fontSize: moderateScale(16),
   },
   suggestionsContainer: {
     backgroundColor: "white",
     borderColor: "gray",
-    borderWidth: 1,
+    borderWidth: scale(1),
     borderRadius: 4,
     marginTop: verticalScale(8),
     zIndex: 1,
@@ -190,7 +188,7 @@ const styles = StyleSheet.create({
   suggestion: {
     padding: 8,
     borderBottomColor: "gray",
-    borderBottomWidth: 1,
+    borderBottomWidth: scale(1),
   },
   noSuggestions: {
     padding: 8,
@@ -198,7 +196,7 @@ const styles = StyleSheet.create({
     color: "gray",
   },
   separator: {
-    height: 1,
+    height: verticalScale(1),
     width: "100%",
     backgroundColor: colors.greySeparator,
   },

@@ -8,7 +8,7 @@ import {
 } from "./cartSlice";
 import { colors } from "../../constants/colors";
 import CartItem from "./CartItem";
-import { verticalScale } from "../../utilis/scaling";
+import { moderateScale, verticalScale } from "../../utilis/scaling";
 import OrderSummary from "./OrderSummary";
 import EmptyCart from "./EmptyCart";
 
@@ -89,13 +89,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   loadingText: {
-    fontSize: 18,
+    fontSize: moderateScale(18),
     color: colors.primary,
     textAlign: "center",
     marginTop: 20,
   },
   separator: {
-    height: 1,
+    height: verticalScale(1),
     width: "100%",
     backgroundColor: colors.greySeparator,
   },

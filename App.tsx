@@ -8,13 +8,12 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { fonts } from "./assets/fonts/fonts";
 import { colors } from "./src/constants/colors";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import SplashScreenComponent from "./src/components/SplashScreenComponent";
 import { PersistGate } from "redux-persist/integration/react";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ ...fonts });
-
   const [isReady, setIsReady] = useState(false);
 
   const onLayoutRootView = useCallback(async () => {
@@ -39,7 +38,7 @@ export default function App() {
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
           <StatusBar backgroundColor={colors.white} style="dark" />
-          <SafeAreaView style={{ flex: 1 }}>
+          <SafeAreaView style={styles.safeArea}>
             <TabNavigator />
           </SafeAreaView>
         </NavigationContainer>
@@ -47,3 +46,9 @@ export default function App() {
     </Provider>
   );
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+});
