@@ -1,5 +1,13 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Platform,
+  StatusBar,
+} from "react-native";
 import { colors } from "../../constants/colors";
 import { moderateScale, scale, verticalScale } from "../../utilis/scaling";
 import { useNavigation } from "@react-navigation/native";
@@ -16,9 +24,20 @@ const LocationName = () => {
     navigation.navigate(ScreenNames.LocationPicker);
   };
 
+  const statusBarHeight: number =
+    Platform.OS === "android" ? StatusBar.currentHeight || 0 : 0;
+
   return (
     <View>
-      <TouchableOpacity style={styles.container} onPress={handleNavigation}>
+      <TouchableOpacity
+        style={[
+          styles.container,
+          {
+            paddingTop: statusBarHeight + verticalScale(32),
+          },
+        ]}
+        onPress={handleNavigation}
+      >
         <Image source={icons.location} style={styles.icon} />
         <Text style={styles.title}>{cityName || "Select your location"}</Text>
       </TouchableOpacity>
@@ -28,7 +47,6 @@ const LocationName = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: verticalScale(32),
     flexDirection: "row",
     backgroundColor: colors.white,
     alignItems: "center",

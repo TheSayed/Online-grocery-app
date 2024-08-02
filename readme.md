@@ -14,20 +14,24 @@ Make sure you have the following installed:
 
 - [Expo CLI](https://docs.expo.dev/get-started/installation/) (install with `npm install -g expo-cli`)
 
-1. **Install the dependencies:**
+## Installation
 
-   Make sure you're in the project directory, then install the required node modules by running:
+**Install the dependencies:**
 
-   ```bash
-   yarn install
-   ```
+Make sure you're in the project directory, then install the required node modules by running:
 
-   If you prefer using npm, you can use:
+```bash
+yarn install
+```
+
+If you prefer using npm, you can use:
 
 ```bash
 
 npm  install
 ```
+
+## Run The App
 
 1\.  **Start the development server:**
 
@@ -38,7 +42,7 @@ To start the Expo development server, run:
 npx  expo  start
 ```
 
-1\.  **Run the app:**
+2\.  **Run the app:**
 
 - **For iOS:** Using your device Camera scan the QR code displayed in your terminal or in the Expo DevTools in your browser , Open the Expo Go app on your physical iOS device. If you don't have Expo Go installed, you can download it from the App Store.
 
@@ -48,13 +52,13 @@ Make sure your device and development server are on the same WiFi network:
 
 For Expo Go to connect successfully, your development server (the machine running the Expo CLI) and your physical device should be on the same Wi-Fi network.
 
-**Troubleshooting**
+## Troubleshooting
 
 - If the app does not load, ensure that your device and development server are on the same network.
 
 - Check the terminal for any error messages that might provide more information on issues you encounter.
 
-**Running Tests**
+## Running Tests
 
 To run the tests with Jest, use the following command:
 
@@ -68,7 +72,7 @@ Or, if you prefer npm:
 npm test
 ```
 
-**Project Details**
+## Project Details
 
 - **Project Name:** Online Grocery App
 
@@ -92,7 +96,7 @@ npm test
 
 - Utilizes location services to get the user’s city name.
 
-**Additional Information**
+## Additional Information
 
 - **Custom Splash Screen Component:** Managed by loading state and font loading, does not rely on Expo's splash screen configuration.
 
