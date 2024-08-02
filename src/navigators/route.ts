@@ -7,4 +7,5 @@ export const ScreenNames = {
   Categories: "Categories",
   PopularDeals: "Popular Deals",
   Search: "Search For Groceries",
+  LocationPicker: "Location",
 };

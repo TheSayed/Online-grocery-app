@@ -12,15 +12,17 @@ import {
 import ExpoFileSystemStorage from "redux-persist-expo-filesystem";
 import { groceryApi } from "../src/services/groceryApi";
 import cartReducer from "../src/screens/Cart/cartSlice";
+import locationReducer from "../src/screens/Location/locationSlice"; // Make sure this import is correct
 
 const persistConfig = {
   key: "root",
   storage: ExpoFileSystemStorage,
-  whitelist: ["cart"],
+  whitelist: ["cart", "location"],
 };
 
 const rootReducer = combineReducers({
   cart: cartReducer,
+  location: locationReducer, // Make sure this line is present
   [groceryApi.reducerPath]: groceryApi.reducer,
 });
 

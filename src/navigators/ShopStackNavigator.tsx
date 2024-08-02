@@ -5,6 +5,8 @@ import { ScreenNames } from "./route";
 import Shop from "../screens/Shop/Shop";
 import AppHeader from "../components/AppHeader";
 import SearchScreen from "../screens/Search/SearchScreen";
+import LocationName from "../screens/Location/LocationName";
+import LocationPicker from "../screens/Location/LocationPicker";
 
 const Stack = createStackNavigator();
 
@@ -15,9 +17,7 @@ const ShopStackNavigator = () => {
         name={"Shop Screen"}
         component={Shop}
         options={{
-          header: () => (
-            <AppHeader title={ScreenNames.Shop} showBackArrow={false} />
-          ),
+          header: () => <LocationName />,
         }}
       />
       <Stack.Screen
@@ -44,6 +44,18 @@ const ShopStackNavigator = () => {
         options={{
           header: () => (
             <AppHeader title={ScreenNames.Search} showBackArrow={true} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name={ScreenNames.LocationPicker}
+        component={LocationPicker}
+        options={{
+          header: () => (
+            <AppHeader
+              title={ScreenNames.LocationPicker}
+              showBackArrow={true}
+            />
           ),
         }}
       />
