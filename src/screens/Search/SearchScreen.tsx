@@ -5,11 +5,13 @@ import { RouteProp, useRoute } from "@react-navigation/native";
 import ProductsList from "../../components/ProductsList";
 import { colors } from "../../constants/colors";
 
-type SearchScreenRouteProp = RouteProp<RootStackParamList, "Search">;
+type SearchScreenParams = {
+  searchQuery: string;
+};
 
 const SearchScreen = () => {
-  const route = useRoute<SearchScreenRouteProp>();
-  const searchQuery = (route.params as any)?.searchQuery || "";
+  const route = useRoute<RouteProp<{ Search: SearchScreenParams }, "Search">>();
+  const searchQuery = (route.params as SearchScreenParams).searchQuery || "";
 
   const { data: products = [], isLoading } = useGetProductsQuery();
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { MapPressEvent, Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { colors } from "../../constants/colors";
 import { scale, verticalScale } from "../../utilis/scaling";
-import { useNavigation } from "@react-navigation/native"; // Import the typed dispatch hook
-import { setCityName } from "./locationSlice"; // Import the action
+import { useNavigation } from "@react-navigation/native";
+import { setCityName } from "./locationSlice";
 import { useDispatch } from "react-redux";
 
 const LocationPicker = () => {
@@ -14,7 +14,7 @@ const LocationPicker = () => {
     longitude: number;
   } | null>(null);
   const navigation = useNavigation();
-  const dispatch = useDispatch(); // Use the typed dispatch
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
@@ -32,7 +32,7 @@ const LocationPicker = () => {
     })();
   }, []);
 
-  const handleMapPress = (e: any) => {
+  const handleMapPress = (e: MapPressEvent) => {
     setLocation(e.nativeEvent.coordinate);
   };
 
@@ -43,8 +43,8 @@ const LocationPicker = () => {
         if (result.length > 0) {
           const { city, region } = result[0];
           const locationName = city || region || "Unknown location";
-          dispatch(setCityName(locationName)); // Dispatch the action to set city name
-          navigation.goBack(); // Go back to the previous screen
+          dispatch(setCityName(locationName));
+          navigation.goBack();
         }
       } catch (error) {
         console.error("Error getting location name:", error);
