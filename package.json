@@ -15,7 +15,6 @@
     "@babel/plugin-syntax-import-meta": "^7.10.4",
     "@babel/plugin-syntax-json-strings": "^7.8.3",
     "@babel/plugin-syntax-top-level-await": "^7.14.5",
-    "@react-native-async-storage/async-storage": "^1.24.0",
     "@react-native-masked-view/masked-view": "0.3.1",
     "@react-navigation/bottom-tabs": "^6.6.1",
     "@react-navigation/native": "^6.1.18",

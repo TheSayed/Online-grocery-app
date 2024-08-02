@@ -1,5 +1,5 @@
 import { Image, StyleSheet } from "react-native";
-import React, { useState } from "react";
+import { useState } from "react";
 import { images } from "../../assets/Images";
 
 type Props = {

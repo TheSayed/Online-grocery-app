@@ -1,4 +1,3 @@
-import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useGetProductsQuery } from "../../services/groceryApi";
 import { RouteProp, useRoute } from "@react-navigation/native";

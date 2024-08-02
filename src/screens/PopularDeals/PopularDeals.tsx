@@ -26,6 +26,7 @@ const PopularDeals: React.FC<Props> = ({
   }
 
   if (error) {
+    console.log(error);
     return <Text>Error loading products</Text>;
   }
 
